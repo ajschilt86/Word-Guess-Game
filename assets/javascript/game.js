@@ -71,7 +71,7 @@ document.addEventListener('keydown', function (event) {
         losses++;
         guesses = 10;
         wrongLetters = [];
-        randWord = [Math.floor(Math.random() * teams.length)]
+        randWord = [Math.floor(Math.random() * teams.length)];
         document.getElementById("spaces").innerHTML = ">" + blanksAndGuess + "<";
         document.getElementById("losses").innerHTML = "losses: " + losses;
         console.log(randWord);
