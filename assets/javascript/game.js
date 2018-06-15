@@ -25,7 +25,7 @@ console.log(randWord);
 
 var randomChoice = teams[randWord];
 console.log(randomChoice);
-for (var i = 0; i < randomChoice; i++) {
+for (var i = 0; i < randomChoice.length; i++) {
     blanksAndGuess.push(" _ ");
     //document.getElementById("spaces").innerHTML = blanksAndGuess;//
 
@@ -53,6 +53,7 @@ document.addEventListener('keydown', function (event) {
         guesses = 10;
         wrongLetters.length = 0;
         randWord = teams[Math.floor(Math.random() * teams.length)];
+        
 
     } else {
         guesses--;        
@@ -63,6 +64,7 @@ document.addEventListener('keydown', function (event) {
         if (currentWord[i] === event.key) {
             blanksAndGuess[i] = event.key;
             console.log(blanksAndGuess);
+            document.getElementById("spaces").innerHTML = "New Word " + blanksAndGuess;
         }
     }
 
