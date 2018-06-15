@@ -1,0 +1,40 @@
+body {
+    text-align: center;
+    margin-top: 50px;
+    width: 100%;
+    margin: 50px auto;    
+}
+
+h1 {
+    font-size: 100px;
+    font-family: 'Permanent Marker', cursive;
+}
+
+
+h4 {
+    font-size: 50px;   
+}
+
+.winLoss {
+    margin-top: 100px;
+    float: left;
+}
+
+
+
+#wins {
+    color: green;
+}
+
+#losses {
+    color: red;
+}
+
+#guesses {
+    color: orange;
+    margin-bottom: 20px;
+}
+
+#lettersGuessed {
+    color: blue;
+}
