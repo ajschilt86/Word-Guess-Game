@@ -1,5 +1,5 @@
-var teams = ["white sox", "yankees", "cubs", "dodgers", "mets", "astros", "cardinals", "braves", "giants", "brewers", "nationals", "phillies", "indians",
-    "diamondbacks", "orioles", "tigers", "rangers", "twins", "pirates", "rockies", "reds", "padres", "athletics", "royals", "rays", "marlins", "giants", "red sox", "mariners", "angels", "blue jays"];
+var teams = ["whitesox", "yankees", "cubs", "dodgers", "mets", "astros", "cardinals", "braves", "giants", "brewers", "nationals", "phillies", "indians",
+    "diamondbacks", "orioles", "tigers", "rangers", "twins", "pirates", "rockies", "reds", "padres", "athletics", "royals", "rays", "marlins", "giants", "redsox", "mariners", "angels", "bluejays"];
 
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
     "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -8,61 +8,80 @@ var wins = 0;           //how many wins//
 var losses = 0;         //how many loses//
 var guesses = 10;       //guesses left//
 var randWord = "";      //random word picked by computer//
-var underScore = [];    //underscore//
+var blanksAndGuess = [];    //blanksAndGuess//
 var currentWord = [];   //word that was chosen//
 var wrongLetters = [];  //array with wrong guesses//
 var lettersToWord = [];
-var numUnderScore = 0;
+var numBlanks = 0;
 
-var randWord = teams[Math.floor(Math.random() * teams.length)];
+
+//choose a random team//
+randWord = teams[Math.floor(Math.random() * teams.length)];
 console.log(randWord);
-lettersToWord = randWord.split('');
+//turn words into separate letters//
+lettersToWord = randWord.split("");
 console.log(lettersToWord);
-
-numUnderScore = lettersToWord.length;
-
+//get the number of underscores per letter of the team//
+numBlanks = lettersToWord.length;
+console.log(numBlanks);
 var randomChoice = teams[randWord];
 console.log(randomChoice);
+for (var i = 0; i < numBlanks; i++) {
+    blanksAndGuess.push(" _ ");
+    //document.getElementById("spaces").innerHTML = blanksAndGuess;//
 
-
-for (var j = 0; j < randomChoice.length; j++) {
-    underScore.push("_ ");
-    //document.getElementById("spaces").innerHTML = underScore;//
-    
-    console.log(underScore);
+    console.log(blanksAndGuess);
 }
 
 
 
-/*
-for (var i = 0; i < teams.length; i++) {
-    currentWord.push(randomChoice[i].charAt(0))
+
+for (var i = 0; i < numBlanks.length; i++) {
+    currentWord.push(numBlanks[i].charAt(0))
     console.log(currentWord);
 }
-*/
+
 
 
 document.addEventListener('keydown', function (event) {
     var userGuess = event.key;
+    console.log(currentWord.includes(userGuess));
+    wrongLetters.push(userGuess);
 
-    console.log(currentWord.includes(userGuess))
+
     if (currentWord.includes(userGuess) === true) {
-        console.log(userGues);
-    } else {
         console.log(userGuess);
-        guesses--;
+        guesses = 10;
+        wrongLetters.length = 0;
+        randWord = teams[Math.floor(Math.random() * teams.length)];
+
+    } else {
+        guesses--;        
+        console.log(userGuess);
     }
 
     for (var i = 0; i < currentWord.length; i++) {
         if (currentWord[i] === event.key) {
-            underScore[i] = event.key;
-            console.log(underScore);
+            blanksAndGuess[i] = event.key;
+            console.log(blanksAndGuess);
         }
+    }
+
+    if (guesses === 0) {
+        console.log("game over");
+        losses++;
+        guesses = 10;
+        wrongLetters = [];
+        randWord = teams[Math.floor(Math.random() * teams.length)]
+        console.log(randWord);
     }
 })
 
-
-
+document.getElementById("guesses").innerHTML = "Gueses left: " + guesses;
+document.getElementById("lettersGuessed").innerHTML = "Guessed letters: " + wrongLetters;
+document.getElementById("spaces").innerHTML = "New Word " + blanksAndGuess;
+document.getElementById("wins").innerHTML = "Wins: " + wins;
+document.getElementById("losses").innerHTML = "losses: " + losses;
 
 
 
@@ -86,16 +105,17 @@ document.addEventListener('keydown', function (event) {
 
 
     // create array of possible words
+    // array of all letters// 
     // pick random word
     //show how many letters are in the word 
-    //for loop --> print word.length underscores
+    //for loop --> print word.length and underscores
     //Check if guess exists in word
-    // .indexOf() !== -1 then its in the word 
+    //.indexOf() !== -1 then its in the word 
     //var blankSpace = words[i].length
-    // show guessed letters with array
-    // give the hangman lives, and create a mechanism to take them away
+    //show guessed letters with array
+    //give the hangman guesses(lives), and create a mechanism to take them away
     //Finish when the player guessed the word
-    // create game over/ new game screen
+    //create game over/ new game screen
 
 
 
