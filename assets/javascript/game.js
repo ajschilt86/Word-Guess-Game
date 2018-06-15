@@ -16,17 +16,16 @@ var numBlanks = 0;
 
 
 //choose a random team//
-randWord = teams[Math.floor(Math.random() * teams.length)];
+randWord = [Math.floor(Math.random() * teams.length)];
 console.log(randWord);
 //turn words into separate letters//
-lettersToWord = randWord.split("");
-console.log(lettersToWord);
+
+
 //get the number of underscores per letter of the team//
-numBlanks = lettersToWord.length;
-console.log(numBlanks);
+
 var randomChoice = teams[randWord];
 console.log(randomChoice);
-for (var i = 0; i < numBlanks; i++) {
+for (var i = 0; i < randomChoice; i++) {
     blanksAndGuess.push(" _ ");
     //document.getElementById("spaces").innerHTML = blanksAndGuess;//
 
@@ -36,8 +35,8 @@ for (var i = 0; i < numBlanks; i++) {
 
 
 
-for (var i = 0; i < numBlanks.length; i++) {
-    currentWord.push(numBlanks[i].charAt(0))
+for (var i = 0; i < randomChoice.length; i++) {
+    currentWord.push(randomChoice[i].charAt(0))
     console.log(currentWord);
 }
 
@@ -73,6 +72,7 @@ document.addEventListener('keydown', function (event) {
         guesses = 10;
         wrongLetters = [];
         randWord = teams[Math.floor(Math.random() * teams.length)]
+        document.getElementById("spaces").innerHTML = "New Word " + blanksAndGuess;
         console.log(randWord);
     }
 })
