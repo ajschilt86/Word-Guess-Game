@@ -22,12 +22,11 @@ console.log(randWord);
 var randomChoice = teams[randWord];
 console.log(randomChoice);
 for (var i = 0; i < randomChoice.length; i++) {
-    blanksAndGuess.push(" _ ");
+    blanksAndGuess.push(" _ ");    
     
-    console.log(blanksAndGuess);
 }
 
-
+console.log(blanksAndGuess);
 
 
 for (var i = 0; i < randomChoice.length; i++) {
@@ -42,6 +41,7 @@ document.addEventListener('keydown', function (event) {
     console.log(currentWord.includes(userGuess));
     wrongLetters.push(userGuess);
 
+  
 
     if (currentWord.includes(userGuess) === true) {
         console.log(userGuess);
