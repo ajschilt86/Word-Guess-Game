@@ -22,25 +22,21 @@ function reset() {
     wrongLetters = [];  //array with wrong guesses//
     lettersToWord = [];
     var numBlanks = 0;
-    guesses = 10; 
+    guesses = 10;
     randWord = [Math.floor(Math.random() * teams.length)];
     console.log(randWord);
-
     var randomChoice = teams[randWord];
     console.log(randomChoice);
     for (var i = 0; i < randomChoice.length; i++) {
         blanksAndGuess.push(" _ ");
-
     }
 
     letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
-    "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
     for (var i = 0; i < randomChoice.length; i++) {
-    currentWord.push(randomChoice[i].charAt(0))
-
-}
-
+        currentWord.push(randomChoice[i].charAt(0))
+    }
 }
 
 
@@ -70,7 +66,6 @@ document.addEventListener('keydown', function (event) {
     console.log(currentWord.includes(userGuess));
     wrongLetters.push(userGuess);
 
-
     if (guessed.indexOf(userGuess) === -1) {
         guessed.push(userGuess);
 
@@ -78,9 +73,9 @@ document.addEventListener('keydown', function (event) {
             console.log(userGuess);
             wrongLetters.length = 0;
             randWord = [Math.floor(Math.random() * teams.length)];
+        }
 
-
-        } else {
+        else {
             guesses--;
             console.log(userGuess);
             document.getElementById("lettersGuessed").innerHTML = "Guessed letters: " + wrongLetters;
@@ -93,17 +88,12 @@ document.addEventListener('keydown', function (event) {
                 blanksAndGuess[i] = event.key;
                 console.log(blanksAndGuess);
                 document.getElementById("spaces").innerHTML = ">" + blanksAndGuess.join(" ") + "<";
-
             }
         }
 
         if (guesses === 0) {
             console.log("game over");
             losses++;
-            guesses = 10;
-            wrongLetters = [];
-            guessed = [];
-            randWord = [Math.floor(Math.random() * teams.length)];
             document.getElementById("spaces").innerHTML = ">" + blanksAndGuess.join(" ") + "<";
             document.getElementById("losses").innerHTML = "losses: " + losses;
             console.log(randWord);
@@ -113,10 +103,9 @@ document.addEventListener('keydown', function (event) {
     }
 
     else {
-        alert("you suck");
         return;
     }
-    
+
     if (blanksAndGuess.indexOf(" _ ") === -1) {
         wins++;
         reset();
