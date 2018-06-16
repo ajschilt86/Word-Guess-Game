@@ -107,6 +107,7 @@ document.addEventListener('keydown', function (event) {
             document.getElementById("spaces").innerHTML = ">" + blanksAndGuess.join(" ") + "<";
             document.getElementById("losses").innerHTML = "losses: " + losses;
             console.log(randWord);
+            reset();
         }
         rendGame();
     }
