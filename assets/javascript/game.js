@@ -13,6 +13,18 @@ var currentWord = [];   //word that was chosen//
 var wrongLetters = [];  //array with wrong guesses//
 var lettersToWord = [];
 var numBlanks = 0;
+var guessed = [];
+
+function reset() {
+    guessed = []
+    blanksAndGuess = [];    //blanksAndGuess//
+    currentWord = [];   //word that was chosen//
+    wrongLetters = [];  //array with wrong guesses//
+    lettersToWord = [];
+    var numBlanks = 0;
+    randWord = [Math.floor(Math.random() * teams.length)];
+    console.log(randWord);
+}
 
 
 //choose a random team//
@@ -22,8 +34,8 @@ console.log(randWord);
 var randomChoice = teams[randWord];
 console.log(randomChoice);
 for (var i = 0; i < randomChoice.length; i++) {
-    blanksAndGuess.push(" _ ");    
-    
+    blanksAndGuess.push(" _ ");
+
 }
 
 console.log(blanksAndGuess);
@@ -31,9 +43,9 @@ console.log(blanksAndGuess);
 
 for (var i = 0; i < randomChoice.length; i++) {
     currentWord.push(randomChoice[i].charAt(0))
-    console.log(currentWord);
-}
 
+}
+console.log(currentWord);
 
 
 document.addEventListener('keydown', function (event) {
@@ -41,52 +53,73 @@ document.addEventListener('keydown', function (event) {
     console.log(currentWord.includes(userGuess));
     wrongLetters.push(userGuess);
 
-  
 
-    if (currentWord.includes(userGuess) === true) {
-        console.log(userGuess);
-        wins++;
-        guesses = 10;
-        wrongLetters.length = 0;
-        randWord = [Math.floor(Math.random() * teams.length)];
-        
+    if (guessed.indexOf(userGuess) === -1) {
+        guessed.push(userGuess);
 
-    } else {
-        guesses--;        
-        console.log(userGuess);
-        document.getElementById("lettersGuessed").innerHTML = "Guessed letters: " + wrongLetters;
-        document.getElementById("guesses").innerHTML = "Guesses left: " + guesses;
-    }
+        if (currentWord.includes(userGuess) === true) {
+            console.log(userGuess);
+            wrongLetters.length = 0;
+            randWord = [Math.floor(Math.random() * teams.length)];
 
-    for (var i = 0; i < currentWord.length; i++) {
-        if (currentWord[i] === event.key) {
-            blanksAndGuess[i] = event.key;
-            console.log(blanksAndGuess);
-            document.getElementById("spaces").innerHTML = ">" + blanksAndGuess + "<";
+
+        } else {
+            guesses--;
+            console.log(userGuess);
+            document.getElementById("lettersGuessed").innerHTML = "Guessed letters: " + wrongLetters;
+            document.getElementById("guesses").innerHTML = "Guesses left: " + guesses;
         }
+
+
+        for (var i = 0; i < currentWord.length; i++) {
+            if (currentWord[i] === event.key) {
+                blanksAndGuess[i] = event.key;
+                console.log(blanksAndGuess);
+                document.getElementById("spaces").innerHTML = ">" + blanksAndGuess.join(" ") + "<";
+
+            }
+        }
+
+        if (guesses === 0) {
+            console.log("game over");
+            losses++;
+            guesses = 10;
+            wrongLetters = [];
+            guessed = [];
+            randWord = [Math.floor(Math.random() * teams.length)];
+            document.getElementById("spaces").innerHTML = ">" + blanksAndGuess.join(" ") + "<";
+            document.getElementById("losses").innerHTML = "losses: " + losses;
+            console.log(randWord);
+        }
+        rendGame();
     }
 
-    if (guesses === 0) {
-        console.log("game over");
-        losses++;
-        guesses = 10;
-        wrongLetters = [];
-        randWord = [Math.floor(Math.random() * teams.length)];
-        document.getElementById("spaces").innerHTML = ">" + blanksAndGuess + "<";
-        document.getElementById("losses").innerHTML = "losses: " + losses;
-        console.log(randWord);
+    else {
+        alert("you suck");
+        return;
+    }
+    console.log(blanksAndGuess);
+    if (blanksAndGuess.indexOf(" _ ") === -1) {
+        wins++;
+        reset();
+        rendGame();
     }
 })
 
-document.getElementById("guesses").innerHTML = "Guesses left: " + guesses;
-document.getElementById("lettersGuessed").innerHTML = "Guessed letters: " + wrongLetters;
-document.getElementById("spaces").innerHTML = ">" + blanksAndGuess + "<";
-document.getElementById("wins").innerHTML = "Wins: " + wins;
-document.getElementById("losses").innerHTML = "losses: " + losses;
 
 
 
+function rendGame() {
+    document.getElementById("guesses").innerHTML = "Guesses left: " + guesses;
+    document.getElementById("lettersGuessed").innerHTML = "Guessed letters: " + guessed;
+    document.getElementById("spaces").innerHTML = ">" + blanksAndGuess.join(" ") + "<";
+    document.getElementById("wins").innerHTML = "Wins: " + wins;
+    document.getElementById("losses").innerHTML = "losses: " + losses;
 
+}
+
+
+rendGame();
 
 
 
