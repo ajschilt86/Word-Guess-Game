@@ -22,8 +22,25 @@ function reset() {
     wrongLetters = [];  //array with wrong guesses//
     lettersToWord = [];
     var numBlanks = 0;
+    guesses = 10; 
     randWord = [Math.floor(Math.random() * teams.length)];
     console.log(randWord);
+
+    var randomChoice = teams[randWord];
+    console.log(randomChoice);
+    for (var i = 0; i < randomChoice.length; i++) {
+        blanksAndGuess.push(" _ ");
+
+    }
+
+    letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
+    "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+    for (var i = 0; i < randomChoice.length; i++) {
+    currentWord.push(randomChoice[i].charAt(0))
+
+}
+
 }
 
 
@@ -98,7 +115,7 @@ document.addEventListener('keydown', function (event) {
         alert("you suck");
         return;
     }
-    console.log(blanksAndGuess);
+    
     if (blanksAndGuess.indexOf(" _ ") === -1) {
         wins++;
         reset();
