@@ -5,12 +5,10 @@ body {
     margin: 50px auto;
     background-image: url(../images/sox.jpeg);    
     background-repeat: no-repeat;
-    background-size: 100% 180%;
-    
+    background-size: 100% 180%;    
 }
 
-.gameHead {
-    
+.gameHead {    
     width: 50%;
     margin: auto;
 }
@@ -19,7 +17,7 @@ body {
     background-color: white;
     width: 30%;
     margin: auto;
-    opacity: .9;
+    opacity: .85;
     height: 400px;
 }
 

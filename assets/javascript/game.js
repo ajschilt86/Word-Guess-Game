@@ -11,7 +11,6 @@ var randWord = "";      //random word picked by computer//
 var blanksAndGuess = [];    //blanksAndGuess//
 var currentWord = [];   //word that was chosen//
 var wrongLetters = [];  //array with wrong guesses//
-var lettersToWord = [];
 var numBlanks = 0;
 var guessed = [];
 
@@ -19,8 +18,7 @@ function reset() {
     guessed = []
     blanksAndGuess = [];    //blanksAndGuess//
     currentWord = [];   //word that was chosen//
-    wrongLetters = [];  //array with wrong guesses//
-    lettersToWord = [];
+    wrongLetters = [];  //array with wrong guesses//    
     var numBlanks = 0;
     guesses = 10;
     randWord = [Math.floor(Math.random() * teams.length)];
@@ -39,7 +37,6 @@ function reset() {
     }
 }
 
-
 //choose a random team//
 randWord = [Math.floor(Math.random() * teams.length)];
 console.log(randWord);
@@ -53,13 +50,10 @@ for (var i = 0; i < randomChoice.length; i++) {
 
 console.log(blanksAndGuess);
 
-
 for (var i = 0; i < randomChoice.length; i++) {
     currentWord.push(randomChoice[i].charAt(0))
-
 }
 console.log(currentWord);
-
 
 document.addEventListener('keydown', function (event) {
     var userGuess = event.key;
@@ -78,25 +72,22 @@ document.addEventListener('keydown', function (event) {
         else {
             guesses--;
             console.log(userGuess);
-            document.getElementById("lettersGuessed").innerHTML = "Guessed letters: " + wrongLetters;
-            document.getElementById("guesses").innerHTML = "Guesses left: " + guesses;
+            rendGame();
         }
-
 
         for (var i = 0; i < currentWord.length; i++) {
             if (currentWord[i] === event.key) {
                 blanksAndGuess[i] = event.key;
                 console.log(blanksAndGuess);
-                document.getElementById("spaces").innerHTML = ">" + blanksAndGuess.join(" ") + "<";
+                rendGame();
             }
         }
 
         if (guesses === 0) {
             console.log("game over");
-            losses++;
-            document.getElementById("spaces").innerHTML = ">" + blanksAndGuess.join(" ") + "<";
-            document.getElementById("losses").innerHTML = "losses: " + losses;
             console.log(randWord);
+            losses++;
+            rendGame();            
             reset();
         }
         rendGame();
