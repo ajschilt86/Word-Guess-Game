@@ -3,7 +3,24 @@ body {
     margin-top: 50px;
     width: 100%;
     margin: 50px auto;
-    background-image: url("/assets/images/sox.jpeg");    
+    background-image: url(../images/sox.jpeg);    
+    background-repeat: no-repeat;
+    background-size: 100% 180%;
+    
+}
+
+.gameHead {
+    
+    width: 50%;
+    margin: auto;
+}
+
+.gameBody {
+    background-color: white;
+    width: 30%;
+    margin: auto;
+    opacity: .9;
+    height: 400px;
 }
 
 h1 {
@@ -11,7 +28,6 @@ h1 {
     font-family: 'Permanent Marker', cursive;
     margin-bottom: 30px;
 }
-
 
 h4 {
     font-size: 50px;   
@@ -21,8 +37,6 @@ h4 {
     margin-top: 100px;
     float: left;
 }
-
-
 
 #wins {
     color: green;
@@ -34,8 +48,7 @@ h4 {
 
 #guesses {
     color: orange;
-    margin-bottom: 30px;
-    
+    margin-bottom: 30px;    
 }
 
 #lettersGuessed {
