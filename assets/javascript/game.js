@@ -104,9 +104,6 @@ document.addEventListener('keydown', function (event) {
     }
 })
 
-
-
-
 function rendGame() {
     document.getElementById("guesses").innerHTML = "Guesses left: " + guesses;
     document.getElementById("lettersGuessed").innerHTML = "Guessed letters: " + guessed;
@@ -115,26 +112,7 @@ function rendGame() {
     document.getElementById("losses").innerHTML = "losses: " + losses;
 
 }
-
-
 rendGame();
-
-
-
-
-
-
-/* for (var i = 0; i < randomChoice.length; i++) {
-    console.log(" _");
-}
-*/
-
-
-
-
-
-
-
 
     // create array of possible words
     // array of all letters// 
