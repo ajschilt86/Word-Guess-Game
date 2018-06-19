@@ -58,3 +58,33 @@ h4 {
 #spaces {
     margin-bottom: 30px;
 }
+
+@media screen and (max-width: 980px)  {
+
+    .gameBody {
+        width: 500px;
+    }
+    
+}
+
+@media screen and (max-width: 768px)  {
+
+    .gameHead {
+        width: 400px;
+    }
+   
+    
+}
+
+@media screen and (max-width: 640px)  {
+   
+    .gameBody {
+        width: 400px;
+    }
+
+    .gameHead {
+        width: 400px;
+    }
+    
+}
+
