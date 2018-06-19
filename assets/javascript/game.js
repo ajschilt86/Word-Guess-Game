@@ -36,7 +36,6 @@ function reset() {
         currentWord.push(randomChoice[i].charAt(0))
     }
 }
-
 //choose a random team//
 randWord = [Math.floor(Math.random() * teams.length)];
 console.log(randWord);
@@ -87,7 +86,7 @@ document.addEventListener('keydown', function (event) {
             console.log("game over");
             console.log(randWord);
             losses++;
-            rendGame();            
+            rendGame();
             reset();
         }
         rendGame();
