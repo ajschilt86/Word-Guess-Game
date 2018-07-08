@@ -1,4 +1,3 @@
 Baseball Hangman
 
-
-Word Guess Game
+https://ajschilt86.github.io/Word-Guess-Game/
