@@ -1,2 +1,4 @@
-# Word-Guess-Game
+Baseball Hangman
+
+
 Word Guess Game
